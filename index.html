@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f7f8f3">
+<meta name="description" content="헬스장 시설과 운동 프로그램을 살펴보고, 나에게 맞는 운동을 상담해보세요.">
+<title>[헬스장 이름 입력] | 나에게 맞는 운동의 시작</title>
+<style>
+:root{color-scheme:light;--paper:#f7f8f3;--soft:#eef1e8;--white:#fff;--ink:#1e342d;--muted:#68766d;--line:#dfe5da;--green:#356b55;--deep:#244b3b;--mint:#dcefe3;--lime:#d9ed74;--coral:#f18d72;--shadow:0 18px 55px rgba(37,62,49,.09);--header:72px}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:calc(var(--header) + 14px)}body{margin:0;background:var(--paper);color:var(--ink);font-family:Pretendard,"Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;line-height:1.65;letter-spacing:-.015em}button,input,select,textarea{font:inherit;color:inherit}a{color:inherit}[hidden]{display:none!important}:focus-visible{outline:3px solid #e48b67;outline-offset:3px}.skip{position:fixed;z-index:99;top:8px;left:8px;transform:translateY(-150%);padding:10px 14px;border-radius:10px;background:var(--ink);color:white}.skip:focus{transform:translateY(0)}.wrap{width:min(1160px,calc(100% - 44px));margin:auto}
+header.site-header{position:sticky;top:0;z-index:20;background:rgba(247,248,243,.93);backdrop-filter:blur(14px);border-bottom:1px solid rgba(31,52,45,.08)}.nav{width:min(1240px,calc(100% - 40px));min-height:var(--header);margin:auto;display:flex;align-items:center;justify-content:space-between;gap:18px}.brand{display:inline-flex;align-items:center;gap:10px;text-decoration:none;font-weight:850;white-space:nowrap}.mark{display:grid;width:38px;height:38px;place-items:center;border-radius:13px;background:var(--lime);color:var(--deep);font-size:1.2rem;transform:rotate(-6deg)}.navlinks{display:flex;align-items:center;gap:clamp(13px,2.5vw,28px)}.navlinks a{display:inline-flex;align-items:center;min-height:46px;text-decoration:none;color:var(--muted);font-size:.9rem;font-weight:750}.navlinks a:hover{color:var(--deep)}.button{display:inline-flex;min-height:48px;align-items:center;justify-content:center;gap:8px;padding:0 20px;border:0;border-radius:99px;background:var(--green);color:white;text-decoration:none;font-weight:800;cursor:pointer;transition:.2s}.button:hover{background:var(--deep);transform:translateY(-2px)}.button.light{background:white;color:var(--deep);box-shadow:0 8px 24px rgba(30,52,45,.08)}.button.light:hover{background:var(--lime)}.button.outline{border:1px solid var(--line);background:transparent;color:var(--ink)}.button.outline:hover{background:var(--soft)}.menu-toggle{display:none;width:44px;height:44px;border:1px solid var(--line);border-radius:14px;background:white;font-size:1.2rem}
+.hero{position:relative;overflow:hidden;padding:clamp(55px,8vw,100px) 0 80px}.hero:before{content:"";position:absolute;top:-240px;right:-100px;width:420px;height:420px;border-radius:50%;background:var(--mint);opacity:.8}.hero-grid{position:relative;display:grid;grid-template-columns:1.08fr .92fr;gap:50px;align-items:center}.eyebrow{display:flex;align-items:center;gap:9px;margin:0 0 17px;color:var(--green);font-size:.78rem;font-weight:900;letter-spacing:.13em}.eyebrow:before{content:"";width:23px;height:2px;background:var(--coral)}h1,h2,h3,p{overflow-wrap:break-word}.hero h1{max-width:690px;margin:0;font-size:clamp(3rem,6.2vw,5.4rem);line-height:1.08;letter-spacing:-.075em}.hero h1 em{color:var(--green);font-style:normal}.hero-copy{max-width:540px;margin:20px 0 27px;color:var(--muted);font-size:1.1rem}.actions{display:flex;flex-wrap:wrap;gap:11px}.temp-note{margin:16px 0 0;color:#758078;font-size:.78rem}.hero-art{position:relative;min-height:410px;display:grid;place-items:center;overflow:hidden;border-radius:40% 43% 35% 42%/39% 35% 46% 42%;background:var(--mint);transform:rotate(2deg)}.hero-art:before{content:"";position:absolute;right:-60px;top:-75px;width:240px;height:240px;border-radius:50%;background:var(--lime)}.hero-art:after{content:"";position:absolute;left:25px;bottom:22px;width:88px;height:88px;border-radius:50%;background:var(--coral);opacity:.72}.hero-art svg{position:relative;z-index:1;width:min(84%,410px);transform:rotate(-2deg)}.art-label{position:absolute;z-index:2;right:4%;bottom:8%;padding:12px 16px;border-radius:15px;background:white;box-shadow:var(--shadow);font-size:.82rem;font-weight:800;transform:rotate(-2deg)}.art-label span{display:block;color:var(--muted);font-size:.7rem;font-weight:600}.pills{display:flex;flex-wrap:wrap;gap:9px;margin-top:28px}.pill{padding:7px 12px;border:1px solid var(--line);border-radius:99px;background:rgba(255,255,255,.65);color:var(--muted);font-size:.78rem;font-weight:750}
+.section{padding:clamp(70px,9vw,108px) 0}.section.soft{background:var(--soft)}.section-head{max-width:700px;margin:0 auto 38px;text-align:center}.section-head .eyebrow{justify-content:center}.section-head h2,.story h2,.contact-copy h2{margin:0;font-size:clamp(2rem,4.2vw,3.3rem);line-height:1.18;letter-spacing:-.065em}.section-head>p:not(.eyebrow){margin:13px 0 0;color:var(--muted)}.demo-note{width:fit-content;max-width:100%;margin:16px auto 0;padding:8px 13px;border-radius:12px;background:#f0f4d8;color:#626e39;font-size:.78rem;font-weight:750}
+.program-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px}.program{min-height:255px;padding:25px;border:1px solid rgba(31,52,45,.07);border-radius:26px;background:white;box-shadow:0 8px 30px rgba(37,62,49,.045)}.icon{display:grid;width:52px;height:52px;place-items:center;margin-bottom:20px;border-radius:17px;background:var(--mint);font-size:1.4rem}.program:nth-child(2) .icon{background:#fff0e9}.program:nth-child(3) .icon{background:#f1f4d9}.sample{display:inline-block;margin-bottom:8px;padding:4px 9px;border-radius:99px;background:#f1f3ed;color:#69756c;font-size:.68rem;font-weight:800}.program h3,.feature h3{margin:0;font-size:1.22rem;letter-spacing:-.04em}.program p,.feature p{margin:8px 0 0;color:var(--muted);font-size:.9rem}.program .price{margin-top:18px;color:var(--green);font-weight:850}
+.split{display:grid;grid-template-columns:.9fr 1.1fr;gap:50px;align-items:center}.story-art{position:relative;min-height:350px;display:grid;place-items:center;overflow:hidden;border-radius:32px;background:#f4dfd4}.story-art:before{content:"";position:absolute;left:-40px;bottom:-75px;width:230px;height:230px;border-radius:50%;background:#efaa92}.story-art svg{position:relative;z-index:1;width:74%;max-width:340px}.story h2{margin-bottom:16px}.story>p:not(.eyebrow){color:var(--muted)}.feature-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px;margin-top:23px}.feature{padding:13px;border-radius:14px;background:white;font-size:.86rem;font-weight:750}.feature b{margin-right:7px;color:var(--green)}
+.hours-card{max-width:830px;margin:auto;overflow:hidden;border-radius:26px;background:white;box-shadow:var(--shadow)}.hours-head{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:22px 28px;background:var(--mint)}.hours-head strong{font-size:1.05rem}.hours-head span{color:var(--deep);font-size:.78rem;font-weight:800}.hours-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.hours-row{display:flex;justify-content:space-between;gap:12px;padding:16px 28px;border-bottom:1px solid var(--line)}.hours-row:nth-child(odd){border-right:1px solid var(--line)}.hours-row span:first-child{color:var(--muted);font-weight:700}.hours-row span:last-child{font-weight:800}.hours-foot{margin:0;padding:15px 28px;color:var(--muted);font-size:.8rem}
+.visit-layout,.contact-layout{display:grid;grid-template-columns:.8fr 1.2fr;gap:24px;align-items:stretch}.info-panel,.map{padding:clamp(24px,4vw,36px);border-radius:26px;background:white;box-shadow:var(--shadow)}.info-panel h3{margin:0 0 18px;font-size:1.4rem}.info-row{padding:14px 0;border-top:1px solid var(--line)}.info-row dt{color:var(--muted);font-size:.78rem;font-weight:800}.info-row dd{margin:4px 0 0;font-weight:750}.map{position:relative;min-height:320px;display:grid;place-items:center;overflow:hidden;background-color:#e8eee6;background-image:linear-gradient(25deg,transparent 45%,rgba(255,255,255,.75) 46%,rgba(255,255,255,.75) 51%,transparent 52%),linear-gradient(155deg,transparent 36%,rgba(255,255,255,.72) 37%,rgba(255,255,255,.72) 42%,transparent 43%);background-size:170px 130px,190px 160px}.map-pin{width:58px;height:58px;display:grid;place-items:center;border-radius:50% 50% 50% 8px;background:var(--coral);color:white;font-size:1.4rem;transform:rotate(-45deg);box-shadow:0 12px 25px rgba(130,76,54,.2)}.map-pin span{transform:rotate(45deg)}.map-label{position:absolute;bottom:20px;left:20px;padding:9px 12px;border-radius:11px;background:white;font-size:.78rem;font-weight:800}
+.contact-layout{grid-template-columns:.72fr 1.28fr;gap:48px;align-items:start}.contact-copy h2{margin:0;font-size:clamp(2rem,4.2vw,3.2rem);line-height:1.16;letter-spacing:-.065em}.contact-copy>p:not(.eyebrow){color:var(--muted)}.notice-box{margin-top:24px;padding:15px;border-radius:16px;background:#f0f4d8;color:#596435;font-size:.8rem}.form-card{padding:clamp(22px,4vw,36px);border:1px solid rgba(31,52,45,.06);border-radius:28px;background:white;box-shadow:var(--shadow)}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px 13px}.field{min-width:0}.wide{grid-column:1/-1}.field label{display:block;margin-bottom:6px;font-size:.84rem;font-weight:850}.req{color:#c85b43}.field input,.field select,.field textarea,.search,.filter{width:100%;min-height:49px;padding:11px 13px;border:1px solid #dce3da;border-radius:12px;background:#fbfcf9}.field textarea{min-height:125px;resize:vertical}.field input::placeholder,.field textarea::placeholder{color:#9aa49b}.help,.error{margin:5px 0 0;font-size:.75rem}.help{color:var(--muted)}.error{min-height:1.05em;color:#b74736;font-weight:700}[aria-invalid=true]{border-color:#c75b49!important;background:#fff9f7!important}.consent{display:flex;align-items:flex-start;gap:10px;padding:13px;border-radius:13px;background:#f7f8f3}.consent input{width:19px;height:19px;flex:none;margin:2px 0 0;accent-color:var(--green)}.consent label{margin:0;color:var(--muted);font-size:.78rem;font-weight:650}.submit-row{display:flex;align-items:center;gap:13px;margin-top:18px}.feedback{min-height:24px;margin:12px 0 0;color:var(--green);font-size:.85rem;font-weight:750}.feedback.error{color:#b74736}
+footer{padding:28px 0;background:var(--ink);color:white}.footer{display:flex;align-items:center;justify-content:space-between;gap:20px}.footer-brand{font-weight:850}.footer-meta{color:#c7d3ca;font-size:.78rem}.footer-admin{color:#dce8de;font-size:.78rem;text-underline-offset:3px}
+.admin-page{min-height:100vh;background:#f3f5f0}.admin-top{background:white;border-bottom:1px solid var(--line)}.admin-top-inner{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:18px}.admin-name{display:flex;align-items:center;gap:11px}.admin-name h1{margin:0;font-size:1.18rem}.admin-name p{margin:0;color:var(--muted);font-size:.75rem}.admin-content{padding:38px 0 80px}.local-warning{margin-bottom:20px;padding:13px 16px;border:1px solid #e8dca6;border-radius:14px;background:#fff9db;color:#675d2e;font-size:.83rem}.local-warning strong{display:block}.storage-warning{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:20px;padding:14px 16px;border:1px solid #efc1b8;border-radius:14px;background:#fff4f1;color:#8f382a;font-size:.84rem}.storage-warning p{margin:0}.admin-disabled{opacity:.5;pointer-events:none}.admin-title-row{display:flex;align-items:end;justify-content:space-between;gap:20px;margin-bottom:20px}.admin-title-row h2{margin:0;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-.06em}.admin-title-row p{margin:4px 0 0;color:var(--muted)}.admin-tools{display:flex;gap:8px}.admin-tools .button{min-height:43px;padding-inline:15px;font-size:.82rem}.stats{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:11px;margin-bottom:20px}.stat{padding:15px;border:1px solid var(--line);border-radius:16px;background:white}.stat span{display:block;color:var(--muted);font-size:.74rem;font-weight:750}.stat strong{display:block;margin-top:3px;font-size:1.5rem}.list-panel{padding:18px;border:1px solid var(--line);border-radius:20px;background:white}.filters{display:grid;grid-template-columns:1fr 210px;gap:11px;margin-bottom:13px}.search,.filter{min-height:45px}.result-count{margin:0 0 12px;color:var(--muted);font-size:.77rem}.inquiry-list{display:grid;gap:10px}.inquiry{padding:16px;border:1px solid var(--line);border-radius:16px}.inquiry-head{display:flex;align-items:flex-start;justify-content:space-between;gap:15px}.person{display:flex;flex-wrap:wrap;align-items:center;gap:7px 12px}.person strong{font-size:1rem}.person a{color:var(--green);font-size:.86rem;font-weight:750;text-decoration:none}.time{color:var(--muted);font-size:.74rem}.inquiry-actions{display:flex;align-items:center;gap:8px}.status{min-height:39px;padding:6px 9px;border:1px solid var(--line);border-radius:10px;background:white;font-weight:750}.delete{min-height:39px;padding:6px 11px;border:1px solid #ead2ce;border-radius:10px;background:white;color:#a34436;font-size:.8rem;font-weight:800;cursor:pointer}.message{margin:12px 0;padding:12px 14px;border-radius:12px;background:#f7f8f3;white-space:pre-wrap;overflow-wrap:anywhere;font-size:.88rem}.meta{display:flex;flex-wrap:wrap;gap:8px;color:var(--muted);font-size:.76rem}.tag{padding:4px 9px;border-radius:99px;background:var(--mint);color:var(--deep);font-weight:800}.empty{padding:42px 16px;text-align:center;color:var(--muted)}.empty strong{display:block;margin-bottom:5px;color:var(--ink)}.empty .button{margin-top:13px}
+@media(max-width:900px){.hero-grid{gap:30px}.hero-art{min-height:350px}.visit-layout{grid-template-columns:1fr 1fr}.stats{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:700px){:root{--header:66px}.wrap{width:min(100% - 34px,1160px)}.nav{width:calc(100% - 26px)}.menu-toggle{display:grid;place-items:center}.nav-cta{margin-left:auto;min-height:41px;padding:0 14px;font-size:.8rem}.navlinks{display:none;position:absolute;top:var(--header);inset-inline:0;padding:8px 20px 14px;align-items:stretch;gap:0;flex-direction:column;background:var(--paper);border-bottom:1px solid var(--line);box-shadow:0 14px 25px rgba(37,62,49,.08)}.navlinks.open{display:flex}.navlinks a{min-height:46px;border-bottom:1px solid var(--line)}.navlinks a:last-child{border:0}.hero{padding:50px 0 62px}.hero-grid{grid-template-columns:1fr;gap:30px}.hero h1{font-size:clamp(2.9rem,13vw,4.5rem)}.hero-art{min-height:min(82vw,350px)}.section{padding:70px 0}.program-grid{grid-template-columns:1fr}.program{min-height:auto}.split,.visit-layout,.contact-layout{grid-template-columns:1fr;gap:26px}.story-art{min-height:260px}.hours-head{padding:19px}.hours-row{padding:14px 17px;font-size:.86rem}.hours-foot{padding:13px 19px}.map{min-height:260px}.contact-layout{gap:22px}.footer{align-items:flex-start;flex-direction:column;gap:9px}.admin-content{padding-top:25px}.admin-title-row{align-items:flex-start;flex-direction:column}.stat{padding:12px}.list-panel{padding:11px}.inquiry{padding:13px}.inquiry-head{align-items:flex-start;flex-direction:column}.inquiry-actions{width:100%}.status{flex:1}}
+@media(max-width:430px){.nav-cta{display:none}.hero .actions .button{width:100%}.form-grid{grid-template-columns:1fr;gap:12px}.wide{grid-column:auto}.submit-row{align-items:stretch;flex-direction:column}.submit-row .button{width:100%}.feature-grid{grid-template-columns:1fr}.hours-grid{grid-template-columns:1fr}.hours-row:nth-child(odd){border-right:0}.filters{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.storage-warning{align-items:flex-start;flex-direction:column}.person{align-items:flex-start;flex-direction:column;gap:2px}.admin-top-inner{min-height:66px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition-duration:.01ms!important}}
+/* Photo based artwork for the local gym prototype */
+.hero-art{background:url("assets/gym-hero.webp") 100% center/cover no-repeat}.hero-art:before,.hero-art:after{display:none}.hero-art svg{display:none}
+.program .icon{width:calc(100% + 50px);height:170px;margin:-25px -25px 20px;border-radius:0;font-size:0;background-position:center;background-size:cover;background-repeat:no-repeat}.program:nth-child(1) .icon{background-image:url("assets/gym-facility.webp")}.program:nth-child(2) .icon{background-image:url("assets/gym-personal-training.webp")}.program:nth-child(3) .icon{background-image:url("assets/gym-hero.webp")}
+.story-art{background:url("assets/gym-facility.webp") center/cover no-repeat}.story-art:before,.story-art svg{display:none}.story-art:after{content:"AI 생성 예시 사진";position:absolute;z-index:2;left:12px;bottom:12px;width:auto;height:auto;padding:6px 10px;border:0;border-radius:99px;background:rgba(255,255,255,.92);color:var(--ink);font-size:.72rem;font-weight:800}
+
+/* Premium boutique fitness redesign */
+:root{color-scheme:light;--paper:#f7f5ef;--soft:#efede6;--white:#fffdf9;--ink:#242321;--muted:#77736c;--line:#d8d3c9;--green:#927548;--deep:#171716;--mint:#e9e3d7;--lime:#c6a56d;--coral:#c6a56d;--shadow:0 18px 55px rgba(24,23,20,.08);--header:78px}
+body{background:var(--paper);color:var(--ink);font-family:Pretendard,"Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;letter-spacing:-.02em}
+h1,h2,h3,.brand,.footer-brand{font-family:"Noto Serif KR","AppleMyungjo",Batang,serif;font-weight:600;letter-spacing:-.055em}
+.wrap{width:min(1240px,calc(100% - 64px))}
+:focus-visible{outline:2px solid #c6a56d;outline-offset:4px}
+header.site-header{background:rgba(247,245,239,.96);border-bottom:1px solid rgba(36,35,33,.16);backdrop-filter:blur(12px)}
+.nav{width:min(1320px,calc(100% - 56px));gap:24px}
+.brand{font-size:1.02rem;letter-spacing:.015em}
+.mark{width:35px;height:35px;border-radius:2px;background:var(--deep);color:#d7bd91;font-family:Georgia,serif;font-size:1.05rem;transform:none}
+.navlinks{gap:clamp(14px,2vw,30px)}
+.navlinks a{color:#55514b;font-size:.83rem;font-weight:650;letter-spacing:.01em}
+.navlinks a:hover{color:#927548}
+.button{min-height:48px;padding:0 22px;border-radius:2px;background:#a48655;color:#161513;font-size:.86rem;font-weight:750;letter-spacing:.01em;transition:background .2s ease,color .2s ease,transform .2s ease}
+.button:hover{background:#c2a675;color:#171615;transform:translateY(-1px)}
+.button.light{border:1px solid rgba(247,245,239,.65);background:transparent;color:#f7f5ef;box-shadow:none}
+.button.light:hover{background:rgba(255,255,255,.12)}
+.button.outline{border:1px solid #a48655;background:transparent;color:var(--ink)}
+.button.outline:hover{background:#eee7da}
+.menu-toggle{border-radius:2px;background:transparent}
+
+.hero{min-height:min(790px,calc(100vh - var(--header)));display:flex;align-items:center;overflow:hidden;padding:0;background:#171716;color:#f7f5ef}
+.hero:before{display:none}
+.hero-grid{width:min(1320px,calc(100% - 56px));min-height:min(790px,calc(100vh - var(--header)));display:flex;align-items:center;gap:0}
+.hero-grid>div:first-child{position:relative;z-index:2;width:min(53%,620px);padding:72px 0}
+.hero .eyebrow,.hero .pills{display:none}
+.hero h1{max-width:620px;font-size:clamp(3.4rem,6vw,6rem);line-height:1.16;letter-spacing:-.07em;color:#f7f5ef}
+.hero h1 em{color:#c7a873}
+.hero-copy{max-width:470px;margin:24px 0 34px;color:rgba(247,245,239,.75);font-size:1.04rem;line-height:1.9}
+.hero .actions{gap:12px}
+.hero .temp-note{margin-top:23px;color:rgba(247,245,239,.55);font-size:.75rem}
+.hero-art{position:absolute;z-index:1;inset:0 0 0 auto;width:65%;min-height:0;display:block;overflow:hidden;border-radius:0;transform:none;background-image:linear-gradient(90deg,#171716 0%,rgba(23,23,22,.92) 7%,rgba(23,23,22,.48) 34%,rgba(23,23,22,.02) 76%),url("assets/gym-hero.webp");background-position:center right;background-size:cover;background-repeat:no-repeat}
+.hero-art:before,.hero-art:after,.hero-art svg{display:none}
+.art-label{right:7%;bottom:8%;padding:12px 0 0;border-top:1px solid rgba(199,168,115,.72);border-radius:0;background:transparent;color:#f7f5ef;box-shadow:none;font-family:"Noto Serif KR","AppleMyungjo",Batang,serif;font-size:.96rem;font-weight:600;transform:none}
+.art-label span{margin-top:3px;color:rgba(247,245,239,.7);font-family:Pretendard,"Malgun Gothic",sans-serif;font-size:.75rem}
+
+.section{padding:clamp(82px,10vw,132px) 0}
+.section.soft{background:#f0ede5}
+.section-head{max-width:760px;margin-bottom:52px}
+.eyebrow{margin-bottom:16px;color:#9a7c4e;font-size:.7rem;letter-spacing:.2em}
+.eyebrow:before{width:30px;height:1px;background:#a48655}
+.section-head h2,.story h2,.contact-copy h2{font-size:clamp(2.25rem,4.5vw,3.75rem);line-height:1.3;letter-spacing:-.065em}
+.section-head>p:not(.eyebrow){margin-top:16px;color:#77736c;font-size:.95rem;line-height:1.85}
+.demo-note{margin-top:20px;padding:10px 13px;border:1px solid #d9ccb3;border-radius:0;background:transparent;color:#71634d;font-size:.75rem;font-weight:650}
+
+#programs{background:#171716;color:#f7f5ef}
+#programs .section-head>p:not(.eyebrow){color:rgba(247,245,239,.62)}
+#programs .demo-note{border-color:rgba(199,168,115,.4);color:#d2bc93}
+.program-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.program{min-height:0;padding:0 0 25px;border:0;border-top:1px solid rgba(199,168,115,.55);border-radius:0;background:transparent;box-shadow:none}
+.program .icon{display:block;width:100%;height:clamp(155px,18vw,240px);margin:0 0 21px;border-radius:0;background-position:center;background-size:cover;color:transparent;font-size:0;filter:saturate(.78)}
+.program:nth-child(1) .icon{background-image:url("assets/program-strength.webp")}
+.program:nth-child(2) .icon{background-image:url("assets/program-training.webp")}
+.program:nth-child(3) .icon{background-image:url("assets/program-welcome.webp");background-position:center 42%}
+.sample{display:none}
+.program h3{margin:0;font-size:1.35rem;letter-spacing:-.045em;color:#f7f5ef}
+.program p{margin:11px 0 0;color:rgba(247,245,239,.65);font-size:.87rem;line-height:1.8}
+.program .price{margin-top:18px;color:#c7a873;font-size:.84rem}
+
+.split{grid-template-columns:.92fr 1.08fr;gap:clamp(38px,7vw,94px)}
+.story-art{position:relative;isolation:isolate;order:2;min-height:480px;border-radius:0;background:none}
+.story-art:before{content:"";position:absolute;z-index:-1;inset:-3%;display:block;background:url("assets/facility-cinematic.webp") center/cover no-repeat;transform:scale(1.02);animation:facility-drift 26s ease-in-out infinite alternate;will-change:transform}
+.story-art svg{display:none}
+.story-art:after{left:17px;bottom:17px;padding:7px 10px;border:1px solid rgba(255,255,255,.45);border-radius:0;background:rgba(23,23,22,.72);color:white;font-size:.68rem;font-weight:650}
+.story{order:1}
+.story h2{margin-bottom:22px}
+.story>p:not(.eyebrow){max-width:520px;color:#6f6b64;font-size:.95rem;line-height:1.9}
+.feature-grid{grid-template-columns:1fr 1fr;gap:0 20px;margin-top:30px}
+.feature{padding:15px 0;border-top:1px solid #d4cec2;border-radius:0;background:transparent;font-size:.84rem;font-weight:650}
+.feature b{color:#a48655}
+
+#hours .section-head{margin-bottom:42px}
+.hours-card{max-width:980px;border-top:1px solid #a48655;border-radius:0;background:transparent;box-shadow:none}
+.hours-head{padding:20px 0;border-bottom:1px solid #cfc8bb;background:transparent}
+.hours-head strong{font-family:"Noto Serif KR","AppleMyungjo",Batang,serif;font-size:1.2rem}
+.hours-head span{color:#8e7044;font-size:.75rem;font-weight:700}
+.hours-grid{grid-template-columns:1fr}
+.hours-row{padding:18px 0;border-bottom:1px solid #ded9d0;font-size:.91rem}
+.hours-row:nth-child(odd){border-right:0}
+.hours-row span:first-child{color:#716d66;font-weight:600}
+.hours-row span:last-child{font-weight:700}
+.hours-foot{padding:14px 0 0;color:#77736c;font-size:.78rem}
+
+#location{background:#171716;color:#f7f5ef}
+#location .section-head>p:not(.eyebrow){color:rgba(247,245,239,.62)}
+.visit-layout{grid-template-columns:.82fr 1.18fr;gap:clamp(28px,5vw,72px)}
+.info-panel,.map{padding:0;border-radius:0;background:transparent;box-shadow:none}
+.info-panel h3{margin:0 0 24px;color:#f7f5ef;font-size:1.45rem}
+.info-row{padding:17px 0;border-top:1px solid rgba(199,168,115,.38)}
+.info-row dt{color:#c7a873;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase}
+.info-row dd{margin-top:7px;color:rgba(247,245,239,.84);font-size:.9rem;font-weight:600;line-height:1.7}
+.info-panel .button{margin-top:22px}
+.map{min-height:390px;border:1px solid rgba(199,168,115,.45);background-color:#1c1c1b;background-image:linear-gradient(32deg,transparent 47%,rgba(199,168,115,.16) 48%,rgba(199,168,115,.16) 49%,transparent 50%),linear-gradient(145deg,transparent 39%,rgba(255,255,255,.08) 40%,rgba(255,255,255,.08) 41%,transparent 42%);background-size:190px 170px,220px 190px}
+.map-pin{width:15px;height:15px;border:5px solid #171716;border-radius:50%;background:#c7a873;box-shadow:0 0 0 7px rgba(199,168,115,.22);transform:none}
+.map-pin span{display:none}
+.map-label{bottom:17px;left:17px;padding:8px 11px;border:1px solid rgba(199,168,115,.42);border-radius:0;background:#171716;color:#e7ddca;font-size:.7rem;font-weight:600}
+
+#contact{background:#f0ede5}
+.contact-layout{grid-template-columns:.92fr 1.08fr;gap:0;align-items:stretch}
+.contact-copy{position:relative;isolation:isolate;min-height:100%;padding:clamp(30px,5vw,62px);overflow:hidden;background:linear-gradient(90deg,rgba(23,23,22,.82),rgba(23,23,22,.62)),url("assets/facility-cinematic.webp") center/cover no-repeat;color:#f7f5ef}
+.contact-copy .eyebrow{color:#d6bd91}
+.contact-copy h2{color:#f7f5ef;font-size:clamp(2.1rem,4vw,3.2rem)}
+.contact-copy>p:not(.eyebrow){color:rgba(247,245,239,.76);font-size:.9rem;line-height:1.9}
+.notice-box{margin-top:32px;padding:15px 0 0;border-top:1px solid rgba(214,189,145,.6);border-radius:0;background:transparent;color:rgba(247,245,239,.78);font-size:.75rem;line-height:1.8}
+.form-card{padding:clamp(26px,4.4vw,54px);border:0;border-radius:0;background:#22211f;color:#f7f5ef;box-shadow:none}
+.field label{color:#f1eee7;font-size:.82rem;font-weight:700}
+.field input,.field select,.field textarea,.search,.filter{border:1px solid #5a5751;border-radius:2px;background:#2b2a27;color:#f7f5ef;font-size:.86rem}
+.field input::placeholder,.field textarea::placeholder{color:#a7a39b}
+.help{color:#aaa59c}
+.error{color:#e3a08f}
+.consent{border:1px solid #4c4943;border-radius:2px;background:#292825}
+.consent label{color:#c5c0b7}
+.consent input{accent-color:#b89a66}
+.feedback{color:#d4bd92}
+.feedback.error{color:#e3a08f}
+.submit-row{align-items:flex-start;flex-direction:column}
+.submit-row .button{width:100%;min-height:54px}
+footer{padding:34px 0;background:#171716;color:#f7f5ef}
+.footer-meta{color:rgba(247,245,239,.56);font-size:.72rem}
+.footer-admin{color:#d6bd91;font-size:.75rem}
+
+.admin-page{background:#f7f5ef;color:var(--ink)}
+.admin-top{background:#171716;color:#f7f5ef;border-bottom:1px solid rgba(199,168,115,.45)}
+.admin-name h1{font-size:1.35rem}
+.admin-name p{color:rgba(247,245,239,.62)}
+.admin-content{padding:38px 0 84px}
+.local-warning{margin-bottom:30px;padding:16px 20px;border:1px solid #d8c6a4;border-left:3px solid #a48655;border-radius:0;background:#f4efe4;color:#675638;font-size:.8rem;line-height:1.7}
+.local-warning strong{margin-bottom:3px;color:#3b3326;font-size:.83rem}
+.storage-warning{border:1px solid #d6a69c;border-radius:0;background:#fff4f1;color:#8f382a}
+.admin-title-row{align-items:end;margin-bottom:28px}
+.admin-title-row h2{font-family:"Noto Serif KR","AppleMyungjo",Batang,serif;font-weight:600;letter-spacing:-.055em}
+.admin-title-row p{color:#77736c;font-size:.86rem}
+.admin-tools .button{min-height:44px;border-radius:2px}
+.stats{grid-template-columns:repeat(5,minmax(0,1fr));gap:0;margin:0 0 30px;border-top:1px solid #c9c2b7;border-bottom:1px solid #c9c2b7}
+.stat{padding:17px 16px;border:0;border-right:1px solid #d9d4ca;border-radius:0;background:transparent}
+.stat:last-child{border-right:0}
+.stat span{color:#77736c;font-size:.72rem;font-weight:650}
+.stat strong{margin-top:5px;color:#927548;font-family:"Noto Serif KR","AppleMyungjo",Batang,serif;font-size:1.8rem;font-weight:500}
+.list-panel{padding:0;border:0;border-radius:0;background:transparent}
+.filters{grid-template-columns:minmax(240px,1fr) 230px;gap:12px;margin-bottom:18px}
+.search,.filter{min-height:46px;border-color:#cfc9bf;border-radius:2px;background:#fffdf9;color:var(--ink)}
+.field-label{display:block;margin-bottom:6px;color:#655f56;font-size:.72rem;font-weight:750}
+.result-count{margin:0 0 12px;color:#77736c;font-size:.75rem}
+.inquiry-list{gap:0;border-top:1px solid #c9c2b7}
+.inquiry{padding:20px 4px;border:0;border-bottom:1px solid #d9d4ca;border-radius:0;background:transparent}
+.person strong{font-family:"Noto Serif KR","AppleMyungjo",Batang,serif;font-size:1.04rem}
+.person a{color:#927548}
+.time,.meta{color:#77736c}
+.status{min-height:40px;border-color:#cfc9bf;border-radius:2px;background:#fffdf9;font-size:.78rem}
+.delete{min-height:40px;border-radius:2px;background:transparent}
+.message{border-left:2px solid #c5a574;border-radius:0;background:#f0ede5;color:#4e4a43;font-size:.86rem}
+.tag{padding:4px 8px;border:1px solid #ded4c2;border-radius:0;background:#eee7d9;color:#755b34;font-weight:700}
+.empty{padding:58px 16px;border-bottom:1px solid #d9d4ca;color:#77736c}
+.empty strong{font-family:"Noto Serif KR","AppleMyungjo",Batang,serif;font-size:1.2rem;font-weight:600}
+.empty .button{border-radius:2px}
+
+@keyframes facility-drift{from{transform:scale(1.02) translate3d(0,0,0)}to{transform:scale(1.09) translate3d(-1.2%,-.6%,0)}}
+@media(prefers-reduced-motion:reduce){.story-art:before{animation:none;transform:none;will-change:auto}}
+
+@media(max-width:900px){
+ .wrap{width:min(100% - 42px,1240px)}
+ .nav{width:calc(100% - 38px)}
+ .hero-grid{width:calc(100% - 42px)}
+ .hero-grid>div:first-child{width:58%}
+ .hero-art{width:67%}
+ .hero h1{font-size:clamp(3.2rem,7vw,5rem)}
+ .visit-layout{grid-template-columns:1fr 1fr}
+ .stats{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media(max-width:700px){
+ :root{--header:66px}
+ .wrap{width:calc(100% - 36px)}
+ .nav{width:calc(100% - 28px)}
+ .menu-toggle{display:grid;place-items:center;color:var(--ink)}
+ .nav-cta{margin-left:auto;min-height:40px;padding:0 13px;font-size:.76rem}
+ .navlinks{top:var(--header);padding:8px 19px 14px;background:var(--paper);box-shadow:0 14px 25px rgba(24,23,20,.08)}
+ .navlinks a{min-height:47px;color:#3f3c37}
+ .hero{min-height:690px;min-height:min(760px,calc(100svh - var(--header)));padding:0}
+ .hero-grid{width:calc(100% - 36px);min-height:inherit;display:block}
+ .hero-grid>div:first-child{width:100%;max-width:560px;padding:95px 0 72px}
+ .hero-art{width:100%;opacity:.48;background-image:linear-gradient(90deg,rgba(23,23,22,.92),rgba(23,23,22,.48)),url("assets/gym-hero.webp");background-position:62% center}
+ .hero h1{max-width:540px;font-size:clamp(3rem,12vw,4.6rem)}
+ .hero-copy{max-width:440px;font-size:.98rem}
+ .hero .actions{align-items:stretch;flex-direction:column;max-width:330px}
+ .hero .actions .button{width:100%}
+ .hero .temp-note{max-width:320px;line-height:1.6}
+ .section{padding:78px 0}
+ .section-head{margin-bottom:38px}
+ .program-grid{grid-template-columns:1fr;gap:22px}
+ .program .icon{height:230px;margin-bottom:17px}
+ .program{padding-bottom:22px}
+ .split,.visit-layout,.contact-layout{grid-template-columns:1fr;gap:28px}
+ .story-art{order:1;min-height:320px}
+ .story{order:2}
+ .contact-layout{gap:0}
+ .contact-copy{min-height:350px;padding:30px 24px}
+ .form-card{padding:28px 22px}
+ .hours-row{padding:16px 0;font-size:.85rem}
+ .map{min-height:280px}
+ .footer{align-items:flex-start;flex-direction:column;gap:10px}
+ .admin-content{padding-top:25px}
+ .admin-top-inner{min-height:66px}
+ .admin-title-row{align-items:flex-start;flex-direction:column}
+ .admin-tools{width:100%;flex-wrap:wrap}
+ .admin-tools .button{flex:1}
+ .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .stat{border-bottom:1px solid #d9d4ca}
+ .stat:nth-child(2n){border-right:0}
+ .filters{grid-template-columns:1fr}
+ .list-panel{overflow:hidden}
+ .inquiry{padding:16px 0}
+ .inquiry-head{align-items:flex-start;flex-direction:column}
+ .inquiry-actions{width:100%}
+ .status{flex:1;min-width:0}
+}
+@media(max-width:430px){
+ .nav-cta{display:none}
+ .hero .actions{max-width:none}
+ .form-grid{grid-template-columns:1fr;gap:12px}
+ .wide{grid-column:auto}
+ .submit-row{align-items:stretch}
+ .feature-grid{grid-template-columns:1fr}
+ .hours-grid{grid-template-columns:1fr}
+ .person{align-items:flex-start;flex-direction:column;gap:3px}
+ .inquiry-actions{align-items:stretch}
+ .delete{padding-inline:9px}
+}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition-duration:.01ms!important}}
+
+/* Copy and responsive alignment refresh */
+h1,h2,h3,.brand,.footer-brand,.hours-head strong,.admin-title-row h2{font-family:Pretendard,"Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;font-weight:750;letter-spacing:-.045em}
+.hero h1{font-size:clamp(2.8rem,5.4vw,5.1rem);line-height:1.18;letter-spacing:-.06em}
+.section-head h2,.story h2,.contact-copy h2{line-height:1.2;letter-spacing:-.045em}
+.hero-copy,.section-head>p:not(.eyebrow),.story>p:not(.eyebrow),.contact-copy>p:not(.eyebrow),.program p,.feature,.info-row dd,.hours-row,.field label,.help,.notice-box{word-break:keep-all;text-wrap:pretty}
+.program h3,.info-panel h3{letter-spacing:-.035em}
+@media(max-width:900px){
+ .menu-toggle{display:grid;place-items:center;flex:none}
+ .nav-cta{margin-left:auto;min-height:42px;padding-inline:15px;font-size:.8rem}
+ .navlinks{display:none;position:absolute;top:var(--header);left:0;right:0;padding:8px 22px 14px;align-items:stretch;gap:0;flex-direction:column;background:var(--paper);border-bottom:1px solid var(--line);box-shadow:0 14px 25px rgba(24,23,20,.08)}
+ .navlinks.open{display:flex}
+ .navlinks a{min-height:46px;border-bottom:1px solid var(--line);white-space:nowrap}
+ .navlinks a:last-child{border:0}
+ .hero h1{font-size:clamp(2.7rem,6.2vw,4.6rem)}
+}
+@media(max-width:700px){
+ .hero h1{font-size:clamp(2.6rem,11vw,4.1rem)}
+ .section-head h2,.story h2,.contact-copy h2{font-size:clamp(2rem,8.5vw,3rem)}
+ .program-grid{gap:30px}
+ .program .icon{height:clamp(210px,62vw,300px)}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main-content">본문으로 건너뛰기</a>
+<div id="landing-view">
+<header class="site-header"><div class="nav">
+<a class="brand" href="#home" aria-label="처음으로"><span class="mark" aria-hidden="true">＋</span><span data-gym-name>[헬스장 이름 입력]</span></a>
+<a class="button nav-cta" href="#contact">상담 문의 ↗</a>
+<button class="menu-toggle" type="button" aria-label="메뉴 열기" aria-expanded="false" aria-controls="primary-nav">☰</button>
+<nav class="navlinks" id="primary-nav" aria-label="주요 메뉴"><a href="#programs">프로그램</a><a href="#about">시설 안내</a><a href="#hours">운영시간</a><a href="#location">오시는 길</a><a href="#contact">상담 문의</a></nav>
+</div></header>
+<main id="main-content">
+<section class="hero" id="home"><div class="wrap hero-grid">
+<div><p class="eyebrow">MOVE AT YOUR PACE</p><h1>내게 맞는 운동,<br><em>오늘 시작해요.</em></h1><p class="hero-copy">운동 목표와 경험에 맞는 프로그램을 살펴보세요. 궁금한 점은 부담 없이 문의하실 수 있습니다.</p><div class="actions"><a class="button" href="#contact">상담 신청하기 ↗</a><a class="button light" href="#programs">프로그램 보기</a></div><div class="pills"><span class="pill">시설 안내</span><span class="pill">운동 프로그램</span><span class="pill">상담 신청</span></div><p class="temp-note">사진과 시설 정보는 실제 운영 내용으로 교체해주세요.</p></div>
+<div class="hero-art" role="img" aria-label="시안용으로 생성한 헬스장 운동 사진">
+
+<div class="art-label">MOVE AT YOUR PACE<span>나에게 맞는 속도로 시작하기</span></div></div>
+</div></section>
+<section class="section" id="programs"><div class="wrap"><div class="section-head"><p class="eyebrow">PROGRAM</p><h2>목표와 생활에 맞는 운동</h2><p>헬스 이용부터 1:1 PT까지, 나에게 필요한 프로그램을 살펴보세요.</p><div class="demo-note">프로그램과 요금은 시안용 예시입니다. 실제 운영 정보로 바꿔주세요.</div></div>
+<div class="program-grid">
+<article class="program"><div class="icon" aria-hidden="true">◎</div><span class="sample">이용 안내</span><h3>헬스 회원권</h3><p>이용 기간과 포함 서비스를 확인하고 나에게 맞는 이용권을 찾아보세요.</p><p class="price">[회원권 가격 입력]</p></article>
+<article class="program"><div class="icon" aria-hidden="true">↗</div><span class="sample">1:1 트레이닝</span><h3>개인 맞춤 PT</h3><p>운동 목표와 경험을 바탕으로 수업 방향을 상담해보세요.</p><p class="price">[PT 가격 입력]</p></article>
+<article class="program"><div class="icon" aria-hidden="true">✳</div><span class="sample">방문 전 확인</span><h3>첫 방문 안내</h3><p>시설과 이용 방법이 궁금하다면 방문 전에 편하게 문의해주세요.</p><p class="price">[체험 운영 여부 입력]</p></article>
+</div></div></section>
+<section class="section soft" id="about"><div class="wrap split">
+<div class="story-art" role="img" aria-label="시안용으로 생성한 헬스장 시설 사진"></div>
+<div class="story"><p class="eyebrow">SPACE & GUIDE</p><h2>운동에 집중할 수 있는<br>공간을 소개합니다</h2><p>기구 구성과 편의 시설 등 방문 전에 궁금한 정보를 확인해보세요. 아래 항목을 실제 헬스장에 맞게 채워주세요.</p><div class="feature-grid"><div class="feature"><b>✓</b>[유산소 시설 입력]</div><div class="feature"><b>✓</b>[근력 기구 입력]</div><div class="feature"><b>✓</b>[편의 시설 입력]</div><div class="feature"><b>✓</b>[운동 안내 방식 입력]</div></div></div>
+</div></section>
+<section class="section" id="hours"><div class="wrap"><div class="section-head"><p class="eyebrow">OPEN HOURS</p><h2>방문 전, 운영시간을 확인하세요</h2><p>요일별 운영시간과 휴무일을 확인하고 여유 있게 방문해보세요.</p></div><div class="hours-card"><div class="hours-head"><strong data-gym-name>[헬스장 이름 입력]</strong><span>운영 정보 입력 필요</span></div><div class="hours-grid"><div class="hours-row"><span>평일</span><span>[운영시간 입력]</span></div><div class="hours-row"><span>토요일</span><span>[운영시간 입력]</span></div><div class="hours-row"><span>일요일</span><span>[운영시간 입력]</span></div><div class="hours-row"><span>휴무일</span><span>[휴무일 입력]</span></div></div><p class="hours-foot">공휴일 운영 여부와 변동 사항을 실제 기준으로 입력해주세요.</p></div></div></section>
+<section class="section soft" id="location"><div class="wrap"><div class="section-head"><p class="eyebrow">FIND US</p><h2>오시는 길을 안내합니다</h2><p>주소와 대중교통·주차 정보를 확인한 뒤 편하게 방문해주세요.</p></div><div class="visit-layout"><div class="info-panel"><h3>방문 안내</h3><dl><div class="info-row"><dt>주소</dt><dd>[주소 입력]</dd></div><div class="info-row"><dt>전화</dt><dd>[전화번호 입력]</dd></div><div class="info-row"><dt>대중교통·주차</dt><dd>[교통 및 주차 안내 입력]</dd></div></dl><a class="button" href="#contact">방문 상담 신청 ↗</a></div><div class="map" role="img" aria-label="지도 삽입 위치 안내. 실제 지도와 주소를 추가해주세요."><div class="map-pin" aria-hidden="true"><span>＋</span></div><div class="map-label">실제 주소와 지도를 추가해주세요</div></div></div></div></section>
+<section class="section" id="contact"><div class="wrap contact-layout"><div class="contact-copy"><p class="eyebrow">GET IN TOUCH</p><h2>운동 상담,<br>편하게 신청하세요</h2><p>관심 프로그램과 궁금한 내용을 남겨주시면 관리자 화면에서 확인할 수 있습니다.</p><div class="notice-box">로컬 테스트 시안입니다. 실제 개인정보를 입력하지 마세요. 공개 운영 전 개인정보 수집 안내와 동의 절차를 확정해야 합니다.</div></div>
+<form class="form-card" id="inquiry-form" novalidate><div class="form-grid">
+<div class="field"><label for="name">이름 <span class="req">*</span></label><input id="name" name="name" autocomplete="name" required minlength="2" maxlength="30" placeholder="이름을 입력해주세요" aria-describedby="name-error"><p class="error" id="name-error"></p></div>
+<div class="field"><label for="phone">연락처 <span class="req">*</span></label><input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required placeholder="예: 010-1234-5678" aria-describedby="phone-help phone-error"><p class="help" id="phone-help">숫자 9~11자리로 입력해주세요.</p><p class="error" id="phone-error"></p></div>
+<div class="field wide"><label for="interest">관심 프로그램 <span class="req">*</span></label><select id="interest" name="interest" required aria-describedby="interest-error"><option value="">관심 항목을 선택해주세요</option><option value="membership">회원권 문의</option><option value="pt">PT 상담</option><option value="facility">시설 문의</option><option value="other">기타</option></select><p class="error" id="interest-error"></p></div>
+<div class="field wide"><label for="message">문의 내용 <span class="req">*</span></label><textarea id="message" name="message" required minlength="5" maxlength="1000" placeholder="궁금한 점이나 상담 희망 내용을 적어주세요." aria-describedby="message-help message-error"></textarea><p class="help" id="message-help">5자 이상 1,000자 이하로 입력해주세요.</p><p class="error" id="message-error"></p></div>
+<div class="field wide"><div class="consent"><input id="consent" name="consent" type="checkbox" required aria-describedby="consent-error"><label for="consent">로컬 테스트용 개인정보 안내를 확인했습니다. 실제 운영 전에 안내 문구를 확정해야 합니다. <span class="req">*</span></label></div><p class="error" id="consent-error"></p></div>
+</div><div class="submit-row"><button class="button" id="submit-inquiry" type="submit">문의 접수하기 ↗</button><span class="help">접수 내용은 이 브라우저에만 저장됩니다.</span></div><p class="feedback" id="form-feedback" role="status" aria-live="polite"></p></form>
+</div></section></main>
+<footer><div class="wrap footer"><div><div class="footer-brand" data-gym-name>[헬스장 이름 입력]</div><div class="footer-meta">[주소 입력] · [전화번호 입력]</div></div><a class="footer-admin" href="#admin">로컬 테스트 관리자</a><div class="footer-meta">© <span id="copyright-year">2026</span> [헬스장 이름 입력]</div></div></footer>
+</div>
+<section class="admin-page" id="admin-view" aria-labelledby="admin-title" hidden>
+<header class="admin-top"><div class="wrap admin-top-inner"><div class="admin-name"><span class="mark" aria-hidden="true">＋</span><div><h1 id="admin-title">문의 관리자</h1><p data-gym-name>[헬스장 이름 입력]</p></div></div><a class="button outline" href="#home">랜딩페이지 보기</a></div></header>
+<main class="wrap admin-content"><div class="local-warning"><strong>로컬 테스트 전용 화면</strong>로그인이나 접근 제한이 없습니다. 문의는 현재 브라우저에만 저장되며 실제 개인정보를 입력하지 마세요.</div>
+<div class="storage-warning" id="storage-warning" role="alert" hidden><p id="storage-warning-text"></p><button class="button outline" id="reset-storage" type="button" hidden>테스트 데이터 초기화</button></div>
+<div id="admin-controls"><div class="admin-title-row"><div><h2>문의 목록</h2><p>접수된 문의를 확인하고 진행 상태를 관리하세요.</p></div><div class="admin-tools"><button class="button outline" id="export-csv" type="button">CSV 내보내기</button><a class="button" href="#contact">테스트 문의 작성</a></div></div>
+<div class="stats" id="stat-grid" aria-label="문의 상태별 개수"></div><section class="list-panel" aria-label="문의 목록"><div class="filters"><label><span class="field-label">문의 검색</span><input class="search" id="admin-search" type="search" placeholder="이름, 연락처, 내용 검색" autocomplete="off"></label><label><span class="field-label">상태 필터</span><select class="filter" id="admin-filter"><option value="all">전체 상태</option><option value="new">신규</option><option value="contacted">연락 완료</option><option value="visit_scheduled">방문 예약</option><option value="registered">등록</option><option value="on_hold">보류</option></select></label></div><p class="result-count" id="result-count" aria-live="polite"></p><div class="inquiry-list" id="inquiry-list"></div></section></div>
+</main></section>
+<script>
+(() => {
+"use strict";
+const KEY="gym-inquiries-v1";
+const STATUS={new:"신규",contacted:"연락 완료",visit_scheduled:"방문 예약",registered:"등록",on_hold:"보류"};
+const INTEREST={membership:"회원권 문의",pt:"PT 상담",facility:"시설 문의",other:"기타"};
+const landing=document.getElementById("landing-view"),admin=document.getElementById("admin-view");
+const warning=document.getElementById("storage-warning"),warningText=document.getElementById("storage-warning-text"),resetButton=document.getElementById("reset-storage");
+const controls=document.getElementById("admin-controls"),list=document.getElementById("inquiry-list"),count=document.getElementById("result-count"),stats=document.getElementById("stat-grid");
+const search=document.getElementById("admin-search"),filter=document.getElementById("admin-filter"),csvButton=document.getElementById("export-csv");
+const form=document.getElementById("inquiry-form"),feedback=document.getElementById("form-feedback"),submit=document.getElementById("submit-inquiry");
+let inquiries=[],storageReady=true,corrupt=false;
+
+function readStorage(){try{const raw=localStorage.getItem(KEY);if(raw===null){inquiries=[];return}const parsed=JSON.parse(raw);if(!Array.isArray(parsed)||parsed.some(x=>!x||typeof x!=="object"||typeof x.id!=="string"||typeof x.createdAt!=="string"||typeof x.name!=="string"||typeof x.phone!=="string"||typeof x.interest!=="string"||typeof x.message!=="string"||typeof x.consent!=="boolean"||!Object.prototype.hasOwnProperty.call(STATUS,x.status)))throw new Error("bad data");inquiries=parsed}catch(e){inquiries=[];storageReady=false;corrupt=e instanceof SyntaxError||e.message==="bad data"}}
+function save(next){if(!storageReady)return false;try{localStorage.setItem(KEY,JSON.stringify(next));inquiries=next;return true}catch(e){storageReady=false;showStorageError();return false}}
+function showStorageError(){warning.hidden=false;warningText.textContent="브라우저 저장 기능을 사용할 수 없어 변경 내용을 저장하지 못했습니다. 브라우저의 로컬 저장 설정을 확인해주세요.";resetButton.hidden=true;controls.classList.add("admin-disabled")}
+function showCorrupt(){warning.hidden=false;warningText.textContent="저장된 문의 데이터를 읽을 수 없습니다. 임의로 덮어쓰지 않았습니다. 초기화를 선택하면 이 시안의 테스트 데이터가 삭제됩니다.";resetButton.hidden=false;controls.classList.add("admin-disabled")}
+function el(tag,cls,text){const n=document.createElement(tag);if(cls)n.className=cls;if(text!==undefined)n.textContent=text;return n}
+function dateText(s){const d=new Date(s);return Number.isNaN(d.getTime())?"날짜 확인 필요":new Intl.DateTimeFormat("ko-KR",{year:"numeric",month:"2-digit",day:"2-digit",hour:"2-digit",minute:"2-digit",hourCycle:"h23"}).format(d)}
+function visibleItems(){const q=search.value.trim().toLocaleLowerCase("ko-KR"),st=filter.value;return inquiries.filter(x=>st==="all"||x.status===st).filter(x=>!q||[x.name,x.phone,x.message].some(v=>v.toLocaleLowerCase("ko-KR").includes(q))).sort((a,b)=>new Date(b.createdAt)-new Date(a.createdAt))}
+function renderStats(){const c={all:inquiries.length,new:0,contacted:0,visit_scheduled:0,registered:0,on_hold:0};inquiries.forEach(x=>c[x.status]++);const data=[["전체 문의",c.all],["신규",c.new],["연락 완료",c.contacted],["방문 예약",c.visit_scheduled],["등록 · 보류",c.registered+c.on_hold]];stats.replaceChildren();data.forEach(([label,num])=>{const box=el("div","stat");box.append(el("span","",label),el("strong","",String(num)));stats.append(box)})}
+function cardFor(x){const card=el("article","inquiry"),head=el("div","inquiry-head"),person=el("div","person");person.append(el("strong","",x.name));const tel=el("a","",x.phone);tel.href="tel:"+x.phone.replace(/\D/g,"");tel.setAttribute("aria-label",x.name+"에게 전화하기 "+x.phone);person.append(tel,el("span","time",dateText(x.createdAt)));const actions=el("div","inquiry-actions"),sel=el("select","status");sel.setAttribute("aria-label",x.name+" 문의 상태");Object.entries(STATUS).forEach(([v,l])=>{const o=el("option","",l);o.value=v;o.selected=x.status===v;sel.append(o)});sel.addEventListener("change",()=>{const next=inquiries.map(r=>r.id===x.id?{...r,status:sel.value}:r);if(save(next))render();else render()});const del=el("button","delete","삭제");del.type="button";del.addEventListener("click",()=>{if(!confirm(x.name+"님의 문의를 삭제할까요? 삭제한 문의는 복구할 수 없습니다."))return;if(save(inquiries.filter(r=>r.id!==x.id)))render()});actions.append(sel,del);head.append(person,actions);const msg=el("p","message",x.message),meta=el("div","meta");meta.append(el("span","tag",INTEREST[x.interest]||"기타"),el("span","", "개인정보 안내 확인 "+(x.consent?"완료":"미확인")));card.append(head,msg,meta);return card}
+function render(){if(!storageReady){list.replaceChildren();count.textContent=corrupt?"저장 데이터를 복구한 뒤 문의 목록을 확인할 수 있습니다.":"브라우저 저장 기능을 사용할 수 없습니다.";csvButton.disabled=true;return}renderStats();const items=visibleItems();count.textContent="전체 "+inquiries.length+"건 중 "+items.length+"건 표시";csvButton.disabled=items.length===0;list.replaceChildren();if(!inquiries.length){const empty=el("div","empty");empty.append(el("strong","","아직 접수된 문의가 없습니다."),el("span","","랜딩페이지에서 테스트 문의를 작성하면 이곳에 표시됩니다."));const a=el("a","button","랜딩페이지로 돌아가기");a.href="#home";empty.append(a);list.append(empty);return}if(!items.length){const empty=el("div","empty");empty.append(el("strong","","조건에 맞는 문의가 없습니다."),el("span","","검색어나 상태 필터를 바꿔보세요."));const b=el("button","button outline","검색 조건 초기화");b.type="button";b.addEventListener("click",()=>{search.value="";filter.value="all";render()});empty.append(b);list.append(empty);return}items.forEach(x=>list.append(cardFor(x)))}
+ function setView(){const isAdmin=location.hash==="#admin";landing.hidden=isAdmin;admin.hidden=!isAdmin;document.title=isAdmin?"문의 관리자 | [헬스장 이름 입력]":"[헬스장 이름 입력] | 나에게 맞는 운동의 시작";if(isAdmin){render();scrollTo(0,0)}else{const target=location.hash.length>1?document.getElementById(decodeURIComponent(location.hash.slice(1))):null;if(target)requestAnimationFrame(()=>target.scrollIntoView({behavior:"smooth",block:"start"}));else scrollTo(0,0)}}
+function setError(name,msg){const field=form.elements[name];field.setAttribute("aria-invalid",msg?"true":"false");document.getElementById(name+"-error").textContent=msg}
+function validate(){const name=form.elements.name.value.trim(),phone=form.elements.phone.value.trim(),digits=phone.replace(/\D/g,""),interest=form.elements.interest.value,message=form.elements.message.value.trim(),consent=form.elements.consent.checked;setError("name",name.length<2?"이름을 2자 이상 입력해주세요.":name.length>30?"이름은 30자 이하로 입력해주세요.":"");setError("phone",digits.length<9||digits.length>11?"연락처 숫자를 9~11자리로 입력해주세요.":"");setError("interest",!interest?"관심 프로그램을 선택해주세요.":"");setError("message",message.length<5?"문의 내용을 5자 이상 입력해주세요.":message.length>1000?"문의 내용은 1,000자 이하로 입력해주세요.":"");setError("consent",consent?"":"안내 확인에 체크해주세요.");const invalid=["name","phone","interest","message","consent"].map(k=>form.elements[k]).find(f=>f.getAttribute("aria-invalid")==="true");if(invalid){invalid.focus();return null}return{id:crypto.randomUUID?crypto.randomUUID():"inquiry-"+Date.now()+"-"+Math.random().toString(16).slice(2),createdAt:new Date().toISOString(),name,phone,interest,message,consent,status:"new"}}
+form.addEventListener("submit",e=>{e.preventDefault();feedback.classList.remove("error");feedback.textContent="";if(!storageReady){feedback.classList.add("error");feedback.textContent="브라우저 저장 기능을 사용할 수 없어 문의를 접수하지 못했습니다.";return}const inquiry=validate();if(!inquiry)return;submit.disabled=true;submit.textContent="접수 중...";const ok=save([inquiry,...inquiries]);submit.disabled=false;submit.textContent="문의 접수하기 ↗";if(!ok){feedback.classList.add("error");feedback.textContent="저장에 실패했습니다. 입력 내용을 확인하고 다시 시도해주세요.";return}form.reset();["name","phone","interest","message","consent"].forEach(k=>setError(k,""));feedback.textContent="문의가 접수되었습니다. 관리자 화면에서 확인할 수 있어요."});
+function csvEscape(v){return '"'+String(v??"").replace(/"/g,'""')+'"'}
+function localStamp(d){return d.getFullYear()+String(d.getMonth()+1).padStart(2,"0")+String(d.getDate()).padStart(2,"0")}
+csvButton.addEventListener("click",()=>{const items=visibleItems();if(!storageReady||!items.length)return;const rows=[["접수일시","이름","연락처","관심 프로그램","문의 내용","상태","안내 확인"]];items.forEach(x=>rows.push([dateText(x.createdAt),x.name,x.phone,INTEREST[x.interest]||"기타",x.message,STATUS[x.status],x.consent?"완료":"미확인"]));const blob=new Blob(["\uFEFF"+rows.map(r=>r.map(csvEscape).join(",")).join("\r\n")],{type:"text/csv;charset=utf-8"}),url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="gym-inquiries-"+localStamp(new Date())+".csv";document.body.append(a);a.click();a.remove();URL.revokeObjectURL(url)});
+search.addEventListener("input",render);filter.addEventListener("change",render);
+resetButton.addEventListener("click",()=>{if(!confirm("이 브라우저에 저장된 테스트 문의를 모두 삭제하고 초기화할까요?"))return;try{localStorage.removeItem(KEY);inquiries=[];storageReady=true;corrupt=false;warning.hidden=true;controls.classList.remove("admin-disabled");render()}catch(e){warningText.textContent="저장 데이터를 초기화하지 못했습니다. 브라우저 저장 설정을 확인해주세요.";resetButton.hidden=true}});
+const toggle=document.querySelector(".menu-toggle"),nav=document.getElementById("primary-nav");toggle.addEventListener("click",()=>{const open=toggle.getAttribute("aria-expanded")==="true";toggle.setAttribute("aria-expanded",String(!open));toggle.setAttribute("aria-label",open?"메뉴 열기":"메뉴 닫기");nav.classList.toggle("open",!open)});nav.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>{nav.classList.remove("open");toggle.setAttribute("aria-expanded","false");toggle.setAttribute("aria-label","메뉴 열기")}));
+readStorage();if(corrupt)showCorrupt();else if(!storageReady)showStorageError();document.getElementById("copyright-year").textContent=String(new Date().getFullYear());addEventListener("hashchange",setView);setView();
+})();
+</script>
+</body>
+</html>
+
+
